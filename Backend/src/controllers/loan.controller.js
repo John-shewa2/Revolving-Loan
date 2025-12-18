@@ -1,6 +1,6 @@
 import LoanRequest from "../models/LoanRequest.js";
 import EmployeeProfile from "../models/EmployeeProfile.js";
-import Notification from "../models/Notification.js";
+import Notification from "../models/Notifications.js";
 
 // Employee submits loan request
 export const submitLoanRequest = async (req, res) => {
@@ -44,12 +44,6 @@ export const submitLoanRequest = async (req, res) => {
       employee: employeeProfile._id,
       requestedAmount: amount
     });
-
-    // Notify HR about new loan request (optional: can be done later)
-    // await Notification.create({
-    //   user: hrUserId,
-    //   message: `New loan request submitted by ${employeeProfile.name}`,
-    // });
 
     res.status(201).json({
       message: "Loan request submitted. HR will review and approve based on eligible limit.",
