@@ -127,6 +127,8 @@ export const recommendLoan = async (req, res) => {
   } catch (error) { res.status(500).json({ message: error.message }); }
 };
 
+// Backend/src/controllers/loan.controller.js
+
 export const finalizeLoan = async (req, res) => {
   try {
     const { loanId, status, approvedAmount } = req.body;
@@ -173,7 +175,21 @@ export const finalizeLoan = async (req, res) => {
     }
 
     await loan.save();
-    await Notification.create({ user: loan.employee.userId, message: `Loan #${loan.queueNumber} was ${status}.` });
+
+    // ✅ NOTIFICATION UPDATE: Notify HR Officer (reviewedBy) instead of or in addition to Employee
+    if (loan.reviewedBy) {
+        await Notification.create({ 
+          user: loan.reviewedBy, 
+          message: `Contract generated for Loan #${loan.queueNumber} (${loan.employee.fullName}).` 
+        });
+    }
+
+    // Keep borrower notification if desired, or remove to strictly send to HR
+    await Notification.create({ 
+      user: loan.employee.userId, 
+      message: `Your Loan #${loan.queueNumber} was ${status}. Please contact HR for the contract.` 
+    });
+
     res.json({ message: `Loan ${status}`, loan });
   } catch (error) { res.status(500).json({ message: error.message }); }
 };
