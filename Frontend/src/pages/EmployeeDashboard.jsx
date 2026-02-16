@@ -184,23 +184,23 @@ const EmployeeDashboard = () => {
                 {/* DIVISION 1: SEEDED INFORMATION (READ ONLY) */}
                 <div className="bg-white rounded-xl shadow-md p-6 border-t-4 border-gray-400 mb-6">
                   <h3 className="text-lg font-bold text-gray-700 mb-4 flex items-center gap-2">
-                    <FaUserLock className="text-gray-500" /> Seeded Information (Read Only)
+                    <FaUserLock className="text-gray-500" /> በኮንሲዩመር ሎን ማነጅመንት ዲቪዥን የተሞላ
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className={labelClass}>Full Name</label>
+                      <label className={labelClass}>ሙሉ ሰም</label>
                       <input {...register("fullName")} className={readOnlyClass} readOnly tabIndex="-1" />
                     </div>
                     <div>
-                      <label className={labelClass}>Gross Salary (ETB)</label>
+                      <label className={labelClass}>ያለተጣራ የወር ደምወዝ መጠን</label>
                       <input type="number" {...register("grossSalary")} className={readOnlyClass} readOnly tabIndex="-1" />
                     </div>
                     <div>
-                      <label className={labelClass}>Employment Year</label>
+                      <label className={labelClass}>በባንኩ የተቀጠሩበተ ዘመን</label>
                       <input type="number" {...register("employmentYear")} className={readOnlyClass} readOnly tabIndex="-1" />
                     </div>
                     <div>
-                      <label className={labelClass}>Retirement Year</label>
+                      <label className={labelClass}>የጡረታ ዘመን</label>
                       <input type="number" {...register("retirementYear")} className={readOnlyClass} readOnly tabIndex="-1" />
                     </div>
                   </div>
@@ -209,39 +209,39 @@ const EmployeeDashboard = () => {
                 {/* DIVISION 2: EMPLOYEE EDITABLE INFORMATION */}
                 <div className="bg-white rounded-xl shadow-md p-6 border-t-4 border-emerald-600">
                   <h3 className="text-lg font-bold text-emerald-800 mb-4 flex items-center gap-2">
-                    <FaUserEdit className="text-emerald-600" /> Complete Your Profile
+                    <FaUserEdit className="text-emerald-600" /> የግል መረጃዎን ያሟሉ 
                   </h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="md:col-span-2"><h4 className="font-semibold text-gray-600 border-b pb-1">Job & Personal Details</h4></div>
+                    <div className="md:col-span-2"><h4 className="font-semibold text-gray-600 border-b pb-1">የስራ እና የግል መረጃ</h4></div>
                     
                     <div>
-                      <label className={labelClass}>Year of Birth</label>
+                      <label className={labelClass}>የልደት ዘመን</label>
                       <input type="number" {...register("yearOfBirth", { required: "Required" })} className={inputClass} placeholder="YYYY" />
                       {errors.yearOfBirth && <span className={errorClass}>Required</span>}
                     </div>
                     <div>
-                      <label className={labelClass}>Department</label>
+                      <label className={labelClass}>የሚሰሩበት ክፍል</label>
                       <input {...register("department", { required: "Required" })} className={inputClass} placeholder="e.g. IT" />
                       {errors.department && <span className={errorClass}>Required</span>}
                     </div>
                     <div>
-                      <label className={labelClass}>Job Level</label>
+                      <label className={labelClass}>የሥራ ደረጃ</label>
                       <input {...register("jobLevel", { required: "Required" })} className={inputClass} placeholder="e.g. Senior" />
                       {errors.jobLevel && <span className={errorClass}>Required</span>}
                     </div>
 
-                    <div className="md:col-span-2"><h4 className="font-semibold text-gray-600 border-b pb-1 mt-2">Address</h4></div>
-                    <div><label className={labelClass}>Sub-City</label><input {...register("address.subCity")} className={inputClass} /></div>
-                    <div><label className={labelClass}>Woreda</label><input {...register("address.woreda")} className={inputClass} /></div>
-                    <div><label className={labelClass}>House Number</label><input {...register("address.houseNumber")} className={inputClass} /></div>
-                    <div><label className={labelClass}>Phone Number</label><input {...register("address.phoneNumber")} className={inputClass} /></div>
+                    <div className="md:col-span-2"><h4 className="font-semibold text-gray-600 border-b pb-1 mt-2">አድራሻ</h4></div>
+                    <div><label className={labelClass}>ክ/ከተማ</label><input {...register("address.subCity")} className={inputClass} /></div>
+                    <div><label className={labelClass}>ወረዳ</label><input {...register("address.woreda")} className={inputClass} /></div>
+                    <div><label className={labelClass}>የቤት ቁጥር</label><input {...register("address.houseNumber")} className={inputClass} /></div>
+                    <div><label className={labelClass}>ስልክ ቁጥር</label><input {...register("address.phoneNumber")} className={inputClass} /></div>
 
-                    <div className="md:col-span-2"><h4 className="font-semibold text-gray-600 border-b pb-1 mt-2">Guarantor Info</h4></div>
-                    <div className="md:col-span-2"><label className={labelClass}>Guarantor Name</label><input {...register("guarantor.fullName")} className={inputClass} /></div>
-                    <div><label className={labelClass}>Sub-City</label><input {...register("guarantor.address.subCity")} className={inputClass} /></div>
-                    <div><label className={labelClass}>Woreda</label><input {...register("guarantor.address.woreda")} className={inputClass} /></div>
-                    <div><label className={labelClass}>Phone Number</label><input {...register("guarantor.address.phoneNumber")} className={inputClass} /></div>
+                    <div className="md:col-span-2"><h4 className="font-semibold text-gray-600 border-b pb-1 mt-2">የዋስ መረጃ</h4></div>
+                    <div className="md:col-span-2"><label className={labelClass}>የዋስ ስም</label><input {...register("guarantor.fullName")} className={inputClass} /></div>
+                    <div><label className={labelClass}>ክ/ከተማ</label><input {...register("guarantor.address.subCity")} className={inputClass} /></div>
+                    <div><label className={labelClass}>ወረዳ</label><input {...register("guarantor.address.woreda")} className={inputClass} /></div>
+                    <div><label className={labelClass}>ስልክ ቁጥር</label><input {...register("guarantor.address.phoneNumber")} className={inputClass} /></div>
                   </div>
 
                   <div className="mt-8">
